@@ -1,0 +1,11 @@
+<h1>Chats</h1>
+<hr>
+<table class="table">
+  <% @chats.each do |chat| %>
+    <tr>
+      <td class="bg-dark text-primary">
+        <%= link_to("Chat among "+User.find(chat.sender_id).first_name+" and "+User.find(chat.receiver_id).first_name,chat_path(chat)) %>
+      </td>
+    </tr>
+  <% end %>
+</table>

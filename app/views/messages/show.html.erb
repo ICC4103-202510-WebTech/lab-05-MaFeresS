@@ -1,0 +1,10 @@
+<h1>Message</h1>
+<ul class="bg-dark text-success h5">
+  <li><%= "sent to chat of ID: "+@message.chat_id.to_s %></li>
+  <li><%= "By user of ID: "+@message.user_id.to_s %></li>
+  <li><%= "Content: "+@message.body %></li>
+</ul>
+<br>
+<br>
+<br>
+<%= link_to("Back to messages",messages_path) %>

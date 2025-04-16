@@ -1,0 +1,11 @@
+<h1>Messages</h1>
+<hr>
+<table class="table">
+  <% @messages.each do |message| %>
+    <tr>
+      <td class="bg-dark text-primary">
+        <%= link_to("sent to chat "+message.chat_id.to_s+" by "+User.find(message.user_id).first_name,message_path(message)) %>
+      </td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,8 @@
+<h1 class="bg-dark text-light"><%= @user.first_name+" "+@user.last_name %></h1>
+<ul class="bg-dark text-success h5">
+  <li><%= "email: "+@user.email %></li>
+</ul>
+<br>
+<br>
+<br>
+<%= link_to("Back to users",users_path) %>

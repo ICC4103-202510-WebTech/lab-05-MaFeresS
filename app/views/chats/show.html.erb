@@ -1,0 +1,6 @@
+<h1>Chat</h1>
+<h2 class="bg-dark text-light"><%= "Chat started by "+User.find(@chat.sender_id).first_name+" by sending a message to "+User.find(@chat.receiver_id).first_name %></h2>
+<br>
+<br>
+<br>
+<%= link_to("Back to chats",chats_path) %>
