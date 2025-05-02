@@ -5,6 +5,11 @@ class MessagesController < ApplicationController
   def show
     @message=Message.find(params["id"])
   end
+  def new
+    @message=Message.new
+    @users=User.all.ids
+    @chats=Chat.all.ids
+  end
   def create
     @message=Message.new message_params
     if message.save
@@ -12,11 +17,6 @@ class MessagesController < ApplicationController
     else
       redirect_to new_message_path
     end
-  end
-  def new
-    @message=Message.new
-    @users=User.all.ids
-    @chats=Chat.all.ids
   end
 
   private

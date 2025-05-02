@@ -5,6 +5,10 @@ class ChatsController < ApplicationController
   def show
     @chat=Chat.find(params["id"])
   end
+  def new
+    @chat=Chat.new
+    @users=User.all.ids
+  end
   def create
     @chat=Chat.new chat_params
     if chat.save
@@ -12,10 +16,6 @@ class ChatsController < ApplicationController
     else
       redirect_to new_chat_path
     end
-  end
-  def new
-    @chat=Chat.new
-    @users=User.all.ids
   end
 
   private
