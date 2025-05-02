@@ -1,0 +1,27 @@
+<h1>Write Message</h1>
+<div>
+  <%= form_with model: @message do |f| %>
+    <h4>Chat ID tag</h4>
+    <%= f.select :chat_id, options_for_select(@chats, params[:chat_id]) %>
+    <h4>Author ID tag</h4>
+    <%= f.select :user_id, options_for_select(@users, params[:user_id]) %>
+    <br>
+    <h4>Message:</h4>
+    <%= f.text_field :body, placeholder: "Hello", :size => 100, required: true %>
+
+    <br>
+    <br>
+    <%= f.submit "Send", class: "btn btn-primary" %>
+  <% end %>
+</div>
+<div>
+  <% if @message.errors.any? %>
+    <div>
+      <% @message.errors.each do |error| %>
+        <h1>
+          <%= error.full_message %>
+        </h1>
+      <% end %>
+    </div>
+  <% end %>
+</div>
