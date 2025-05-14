@@ -32,7 +32,7 @@ Chat.create(sender_id:7,receiver_id:9)
 Chat.create(sender_id:3,receiver_id:2)
 
 Message.create(user_id:1,chat_id:1,body:"Would you like to join me for tea?")
-Message.create(user_id:6,chat_id:1,body:"Any day, fine mr.")
+Message.create(user_id:5,chat_id:1,body:"Any day, fine mr.")
 Message.create(user_id:1,chat_id:4,body:"Where are you at.")
 Message.create(user_id:2,chat_id:4,body:"Fishing.")
 Message.create(user_id:8,chat_id:2,body:"Give me back my pasword.")

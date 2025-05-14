@@ -1,0 +1,12 @@
+<div>
+  <%= form_with model: @chat do |f| %>
+    <h4>Sender ID tag</h4>
+    <%= f.select :sender_id, options_for_select(@users, params[:sender_id]) %>
+    <h4>Receiver ID tag</h4>
+    <%= f.select :receiver_id, options_for_select(@users, params[:receiver_id]) %>
+
+    <br>
+    <br>
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  <% end %>
+</div>

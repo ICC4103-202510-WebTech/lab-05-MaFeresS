@@ -1,0 +1,9 @@
+<div>
+  <%= form_with model: @user do |form| %>
+    <%= form.text_field :email, placeholder: "Mail", required: true %>
+    <%= form.text_field :first_name, placeholder: "First Name", required: true %>
+    <%= form.text_field :last_name, placeholder: "Last Name", required: true %>
+
+    <%= form.submit "Save", class: "btn btn-primary" %>
+  <% end %>
+</div>
