@@ -1,0 +1,26 @@
+<h5>Chats this user is a part of:</h5>
+<table class="table">
+  <% @chats.each do |chat| %>
+    <tr>
+      <td class="bg-dark text-primary">
+        <%= "Chat ID: "+chat.id.to_s+" - " %><%= link_to("Chat among "+User.find(chat.sender_id).first_name+" and "+User.find(chat.receiver_id).first_name,chat_path(chat)) %>
+      </td>
+    </tr>
+    <tr>
+      <td class="bg-dark text-primary">
+        <h6>Has sent to the chat:</h6>
+        <div>
+          <table class="table">
+            <% @messages.where(chat_id: chat.id).each do |m| %>
+              <tr>
+                <td class="bg-dark text-primary">
+                  <%= "- Sent: "+m.body %>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+</table>

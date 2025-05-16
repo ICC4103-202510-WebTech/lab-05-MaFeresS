@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   end
   def show
     @user=User.find(params["id"])
+    @chats=Chat.where(sender_id: @user.id)+Chat.where(receiver_id: @user.id)
+    @messages=Message.where(user_id: @user.id)
   end
   def new
     @user=User.new
