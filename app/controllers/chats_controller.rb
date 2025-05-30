@@ -1,4 +1,5 @@
 class ChatsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @chats=Chat.all
   end
@@ -12,8 +13,9 @@ class ChatsController < ApplicationController
   end
   def create
     @chat=Chat.new chat_params
-    if chat.save
-      redirect_to chat_path
+    @chat.sender_id=current_user.id
+    if @chat.save
+      redirect_to chats_path
     else
       redirect_to new_chat_path
     end
@@ -24,6 +26,7 @@ class ChatsController < ApplicationController
   end
   def update
     @chat=Chat.find(params["id"])
+    @chat.sender_id=current_user.id
 
     if @chat.update(chat_params)
       if @chat.save
@@ -36,6 +39,6 @@ class ChatsController < ApplicationController
 
   private
   def chat_params
-    params.require(:chat).permit(:sender_id,:receiver_id)
+    params.require(:chat).permit(:receiver_id)
   end
 end
