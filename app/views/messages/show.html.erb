@@ -8,5 +8,7 @@
 <br>
 <br>
 <br>
-<%= link_to("Edit",edit_message_path(@message)) %>
+<% if can? :edit, @message %>
+  <%= link_to("Edit",edit_message_path(@message)) %>
+<% end %> 
 <%= link_to("Back to messages",messages_path) %>
