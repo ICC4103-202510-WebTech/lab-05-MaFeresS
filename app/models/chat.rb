@@ -7,3 +7,13 @@ class Chat <ApplicationRecord
   validates :receiver_id, presence: true
   validates :receiver_id, comparison: {other_than: :sender_id}
 end
+
+public
+def get_other(user)
+  if sender_id==user.id
+    name=User.find(receiver_id).first_name+" "+User.find(receiver_id).last_name
+  else
+    name=User.find(sender_id).first_name+" "+User.find(sender_id).last_name
+  end
+  return name
+end

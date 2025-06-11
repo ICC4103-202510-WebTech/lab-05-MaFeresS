@@ -4,7 +4,7 @@
   <% @chats.each do |chat| %>
     <tr>
       <td class="bg-dark text-primary">
-        <%= link_to("Chat among "+User.find(chat.sender_id).first_name+" and "+User.find(chat.receiver_id).first_name,chat_path(chat)) %>
+        <%= link_to("Chat with "+chat.get_other(current_user),chat_path(chat)) %>
       </td>
     </tr>
   <% end %>

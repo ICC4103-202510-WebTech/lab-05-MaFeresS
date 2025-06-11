@@ -1,26 +1,33 @@
 <h5>Chats this user is a part of:</h5>
-<table class="table">
+
+<div class="accordion" id="accordion1">
   <% @chats.each do |chat| %>
-    <tr>
-      <td class="bg-dark text-primary">
-        <%= "Chat ID: "+chat.id.to_s+" - " %><%= link_to("Chat among "+User.find(chat.sender_id).first_name+" and "+User.find(chat.receiver_id).first_name,chat_path(chat)) %>
-      </td>
-    </tr>
-    <tr>
-      <td class="bg-dark text-primary">
-        <h6>Has sent to the chat:</h6>
-        <div>
-          <table class="table">
-            <% @messages.where(chat_id: chat.id).each do |m| %>
+    <div class="accordion-item">
+      <h2 class="accordion-header bg-dark text-primary" id=<%= chat.id.to_s+"head" %>>
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target=#<%= chat.id.to_s+"body" %> aria-expanded="false" aria-controls=<%= chat.id.to_s+"body" %>>
+          <%= "Chat among "+User.find(chat.sender_id).first_name+" and "+User.find(chat.receiver_id).first_name %>
+        </button>
+      </h2>
+      <div id=<%= chat.id.to_s+"body" %> class="accordion-collapse collapse" aria-labelledby=<%= chat.id.to_s+"head" %> data-bs-parent="#accordion1">
+        <div class="accordion-body bg-dark text-primary">
+          <h6>User has sent:</h6>
+          <div>
+            <table class="table">
               <tr>
                 <td class="bg-dark text-primary">
-                  <%= "- Sent: "+m.body %>
                 </td>
               </tr>
-            <% end %>
-          </table>
+              <% @messages.where(chat_id: chat.id).each do |m| %>
+                <tr>
+                  <td class="bg-dark text-primary">
+                    <%= "- Sent: "+m.body %>
+                  </td>
+                </tr>
+              <% end %>
+            </table>
+          </div>
         </div>
-      </td>
-    </tr>
+      </div>
+    </div>
   <% end %>
-</table>
+</div>
