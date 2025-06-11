@@ -5,7 +5,7 @@
     <div class="accordion-item">
       <h2 class="accordion-header bg-dark text-primary" id=<%= chat.id.to_s+"head" %>>
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target=#<%= chat.id.to_s+"body" %> aria-expanded="false" aria-controls=<%= chat.id.to_s+"body" %>>
-          <%= "Chat among "+User.find(chat.sender_id).first_name+" and "+User.find(chat.receiver_id).first_name %>
+          <%= "Chat with "+chat.get_other(current_user) %>
         </button>
       </h2>
       <div id=<%= chat.id.to_s+"body" %> class="accordion-collapse collapse" aria-labelledby=<%= chat.id.to_s+"head" %> data-bs-parent="#accordion1">
