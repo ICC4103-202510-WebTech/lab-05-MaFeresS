@@ -6,7 +6,8 @@ class Ability
   def initialize(user)
 
     return unless user.present?
-    can :read, :all
+    can :read, Chat.allowed(user.id)
+    can :read, Message
     can :create, Message
     can :create, Chat
     can [:update, :destroy], Message, user: user
